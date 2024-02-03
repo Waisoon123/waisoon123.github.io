@@ -1,7 +1,7 @@
 steps:
   - name: 'gcr.io/cloud-builders/git'
-    args: ['clone', 'https://github.com/your-username/your-repo.git', '.']
+    args: ['clone', 'https://github.com/Waisoon123/waisoon123.github.io.git', 'react-django-postgressql-trial']
   - name: 'gcr.io/buildpacks/builder:v1'
-    args: ['pack', 'build', '--builder=gcr.io/buildpacks/builder', 'gcr.io/YOUR_PROJECT_ID/your-image-name']
+    args: ['pack', 'build', '--builder=gcr.io/buildpacks/builder', 'gcr.io/react-django-postgressql-trial/myportfolio']
 
-images: ['gcr.io/YOUR_PROJECT_ID/your-image-name']
+images: ['gcr.io/react-django-postgressql-trial/myportfolio']
