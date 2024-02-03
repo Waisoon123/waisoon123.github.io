@@ -1,7 +1,23 @@
 steps:
-  - name: 'gcr.io/cloud-builders/git'
-    args: ['clone', 'https://github.com/Waisoon123/waisoon123.github.io.git', 'react-django-postgressql-trial']
-  - name: 'gcr.io/buildpacks/builder:v1'
-    args: ['pack', 'build', '--builder=gcr.io/buildpacks/builder', 'gcr.io/react-django-postgressql-trial/myportfolio']
+    - name: "gcr.io/cloud-builders/git"
+      args:
+          [
+              "clone",
+              "https://github.com/Waisoon123/waisoon123.github.io.git",
+              "react-django-postgressql-trial",
+          ]
+    - name: "gcr.io/buildpacks/builder:v1"
+      entrypoint: "bash"
+      args:
+          - "-c"
+          - 'curl -sSL "https://github.com/buildpacks/pack/releases/download/v0.18.1/pack-v0.18.1-linux.tgz" | tar -C /usr/local/bin/ --no-same-owner -xzv pack'
+    - name: "gcr.io/buildpacks/builder:v1"
+      args:
+          [
+              "pack",
+              "build",
+              "--builder=gcr.io/buildpacks/builder",
+              "gcr.io/react-django-postgressql-trial/myportfolio",
+          ]
 
-images: ['gcr.io/react-django-postgressql-trial/myportfolio']
+images: ["gcr.io/react-django-postgressql-trial/myportfolio"]
